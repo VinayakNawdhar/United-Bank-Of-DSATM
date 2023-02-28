@@ -16,7 +16,7 @@ const account2 = {
 
 const account3 = {
   owner: 'Vedant Sanjay Khandelwal',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460,10000],
+  movements: [200, -200, 340, -300, -20, 50, 400, -460, 10000],
   interestRate: 0.7,
   pin: 3333,
 };
@@ -71,6 +71,7 @@ const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
+const labelLogo = document.querySelector(".logo");
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
@@ -120,7 +121,7 @@ const getInitials = function (account) {
 
 accounts.map(account => {
   getInitials(account);
-  // console.log(account.username);
+ 
 });
 
 const getDeposits = function (accounts) {
@@ -129,7 +130,7 @@ const getDeposits = function (accounts) {
   });
 };
 getDeposits(accounts);
-// console.log(accounts);
+
 
 const getWithdrawals = function (accounts) {
   accounts.map(function (account) {
@@ -137,7 +138,7 @@ const getWithdrawals = function (accounts) {
   });
 };
 getWithdrawals(accounts);
-// console.log(accounts);
+
 
 const calBalance = function (accounts) {
   accounts.map(function (account) {
@@ -164,7 +165,12 @@ const displayAll = function (account) {
   }  &#8377;`;
 };
 
-// displayAll(account1);
+const calAll = function (accounts) {
+  calBalance(accounts);
+  getDeposits(accounts);
+  getWithdrawals(accounts);
+};
+
 
 containerApp.style.opacity = '0';
 
@@ -172,8 +178,8 @@ let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
-  console.log('clicked');
-  const currentAccount = accounts.find(
+
+  currentAccount = accounts.find(
     currentAccount => currentAccount.username === inputLoginUsername.value
   );
   if (currentAccount) {
@@ -182,6 +188,7 @@ btnLogin.addEventListener('click', function (e) {
       containerApp.style.opacity = '1';
     } else {
       alert('Wrong Password 🚫');
+      inputLoginPin.value = "";
       return;
     }
   } else {
@@ -191,3 +198,69 @@ btnLogin.addEventListener('click', function (e) {
   inputLoginPin.value = '';
   inputLoginPin.blur();
 });
+
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const tranferToAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  let balanceToBeTranfered = Number(inputTransferAmount.value);
+  if (tranferToAcc) {
+    if (balanceToBeTranfered <= currentAccount.balance) {
+      tranferToAcc.movements.push(balanceToBeTranfered);
+      currentAccount.movements.push(-balanceToBeTranfered);
+      calAll(accounts);
+      displayAll(currentAccount);
+    }
+    else{
+      alert("Invalid Amount 👎")
+    }
+    inputTransferTo.value = '';
+    inputTransferAmount.value = '';
+    inputTransferAmount.blur();
+  }
+  else{
+    alert("Enter correct account details!")
+    inputTransferTo.value = '';
+    inputTransferAmount.value = '';
+    inputTransferAmount.blur();
+  }
+});
+
+btnLoan.addEventListener("click",function(e){
+  e.preventDefault();
+  const loanAmount = Number(inputLoanAmount.value);
+  if(loanAmount > 100000){
+    alert("Loan Amount is too much, Sorry🙏");
+  }
+  else{
+    currentAccount.movements.push(loanAmount);
+    calAll(accounts);
+    displayAll(currentAccount);
+  }
+  inputLoanAmount.value = "";
+  inputLoanAmount.blur();
+})
+
+labelLogo.addEventListener("click",function(){
+ 
+  location.reload();
+});
+
+btnClose.addEventListener("click",function(e){
+  e.preventDefault();
+  const accountToBeRemoved = inputCloseUsername.value;
+  if(accountToBeRemoved === currentAccount.username && inputClosePin.value == currentAccount.pin){
+    const index = accounts.indexOf(accounts.find((acc) => acc.username === accountToBeRemoved));
+    accounts.splice(index,1);
+    containerApp.style.opacity = "0";
+    labelWelcome.textContent = "Login to get started"; 
+  }else{
+    alert("Wrong username or pin!");
+  }
+  inputClosePin.value = "";
+  inputCloseUsername.value = "";
+  inputClosePin.blur();
+
+})

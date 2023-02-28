@@ -42,6 +42,11 @@ nav {
 .logo {
   height: 5.25rem;
 }
+.logo:hover{
+  transform: translateY(1px);
+  height: 5.35rem;
+  
+}
 
 .login {
   display: flex;
