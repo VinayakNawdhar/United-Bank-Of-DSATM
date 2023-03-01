@@ -34,8 +34,15 @@ This is a front-end web application that simulates the transactions between mult
 
 ## Screenshots
 
-![Bankist Screenshot 1](/screenshots/bankist-screenshot-1.png)
-![Bankist Screenshot 2](/screenshots/bankist-screenshot-2.png)
+![Bankist Screenshot 1](/screenshot1.png)
+![Bankist Screenshot 2](/screeshot2.png)
+
+
+## Account details
+1. username `ss` pin `1111`.
+2. username `vn` pin `2222`.
+3. username `vsk` pin `3333`.
+4. username `sr` pin `4444`.
 
 ## Contributing
 
