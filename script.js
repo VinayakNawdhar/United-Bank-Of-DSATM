@@ -92,8 +92,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // My Code Starts Here
 
-const displayMovements = function (account) {
-  const movements = account.movements;
+const displayMovements = function (account,sort = false) {
+  const movements = sort ? account.movements.slice().sort((a,b)=>a-b) : account.movements;
   containerMovements.innerHTML = '';
 
   movements.map(function (movement, index) {
@@ -110,6 +110,8 @@ const displayMovements = function (account) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
+let state;
 
 const getInitials = function (account) {
   account['username'] = account.owner
@@ -206,7 +208,7 @@ btnTransfer.addEventListener('click', function (e) {
     acc => acc.username === inputTransferTo.value
   );
   let balanceToBeTranfered = Number(inputTransferAmount.value);
-  if (tranferToAcc) {
+  if (tranferToAcc && tranferToAcc !== currentAccount && balanceToBeTranfered>0) {
     if (balanceToBeTranfered <= currentAccount.balance) {
       tranferToAcc.movements.push(balanceToBeTranfered);
       currentAccount.movements.push(-balanceToBeTranfered);
@@ -221,7 +223,7 @@ btnTransfer.addEventListener('click', function (e) {
     inputTransferAmount.blur();
   }
   else{
-    alert("Enter correct account details!")
+    alert("Enter correct account & amount details!")
     inputTransferTo.value = '';
     inputTransferAmount.value = '';
     inputTransferAmount.blur();
@@ -231,7 +233,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener("click",function(e){
   e.preventDefault();
   const loanAmount = Number(inputLoanAmount.value);
-  if(loanAmount > 100000){
+  if(!currentAccount.deposit.some(tran => tran >= 0.1*loanAmount )){
     alert("Loan Amount is too much, Sorry🙏");
   }
   else{
@@ -252,7 +254,7 @@ btnClose.addEventListener("click",function(e){
   e.preventDefault();
   const accountToBeRemoved = inputCloseUsername.value;
   if(accountToBeRemoved === currentAccount.username && inputClosePin.value == currentAccount.pin){
-    const index = accounts.indexOf(accounts.find((acc) => acc.username === accountToBeRemoved));
+    const index = accounts.findIndex((acc) => acc.username === accountToBeRemoved);
     accounts.splice(index,1);
     containerApp.style.opacity = "0";
     labelWelcome.textContent = "Login to get started"; 
@@ -264,3 +266,8 @@ btnClose.addEventListener("click",function(e){
   inputClosePin.blur();
 
 })
+
+btnSort.addEventListener("click",function(){
+    state = state ? false : true;
+    displayMovements(currentAccount,state)
+});
