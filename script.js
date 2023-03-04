@@ -5,6 +5,17 @@ const account1 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 1111,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 
 const account2 = {
@@ -12,45 +23,122 @@ const account2 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 2222,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 
 const account3 = {
   owner: 'Vedant Sanjay Khandelwal',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460, 10000],
+  movements: [200, -200, 340, -300, -20, 50, 400, 10000],
   interestRate: 0.7,
   pin: 3333,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 
 const account4 = {
   owner: 'Sneha R',
-  movements: [430, 1000, 700, 50, 90],
+  movements: [430, 1000, 700, 50, 90, -100, 200, 12000],
   interestRate: 1,
   pin: 4444,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 
 const account5 = {
   owner: 'Sukhi M',
-  movements: [400, -200, 800, 350, -90],
+  movements: [400, -200, 800, 350, -90, -100, -200, 11000],
   interestRate: 0.8,
   pin: 5555,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 const account6 = {
   owner: 'Varun Kulkarni',
-  movements: [430, 1000, 700, 50, 90],
+  movements: [430, 1000, 700, 50, 90, -200, -1500, 12500],
   interestRate: 1.3,
   pin: 6666,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 const account7 = {
   owner: 'Srineedhi V S',
-  movements: [430, 1000, 700, -50, 90, 1000, -200],
+  movements: [430, 1000, 700, -50, 90, 1000, -200, 10000],
   interestRate: 0.9,
   pin: 7777,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 const account8 = {
   owner: 'Trishala C',
-  movements: [430, 1000, 700, 50, 30, 20, -100, 500],
+  movements: [430, 1000, 700, 50, 30, 20, -100, 15000],
   interestRate: 1,
   pin: 8888,
+  movementsDates: [
+    '2021-11-18T21:31:17.178Z',
+    '2021-12-23T07:42:02.383Z',
+    '2022-01-28T09:15:04.904Z',
+    '2022-04-01T10:17:24.185Z',
+    '2022-05-08T14:11:59.604Z',
+    '2022-05-27T17:01:17.194Z',
+    '2022-07-11T23:36:17.929Z',
+    '2022-07-12T10:51:36.790Z',
+  ],
+  locale: 'en-US',
 };
 const accounts = [
   account1,
@@ -71,7 +159,7 @@ const labelSumIn = document.querySelector('.summary__value--in');
 const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
-const labelLogo = document.querySelector(".logo");
+const labelLogo = document.querySelector('.logo');
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
@@ -92,18 +180,22 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // My Code Starts Here
 
-const displayMovements = function (account,sort = false) {
-  const movements = sort ? account.movements.slice().sort((a,b)=>a-b) : account.movements;
+const displayMovements = function (account, sort = false) {
+  const movements = sort
+    ? account.movements.slice().sort((a, b) => a - b)
+    : account.movements;
   containerMovements.innerHTML = '';
-
-  movements.map(function (movement, index) {
+  const movementsDate = account.movementsDates;
+  movements.forEach(function (movement, index) {
     const type = movement > 0 ? 'deposit' : 'withdrawal';
+    const day = new Date(movementsDate[index]);
     const html = `
         <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-          <div class="movements__value">${movement}  &#8377;</div>
+    <div class="movements__date">${day.getDate()}/${day.getMonth()+1}/${day.getFullYear()}</div>
+          <div class="movements__value">${movement.toFixed(2)}  &#8377;</div>
         </div>
         `;
 
@@ -123,7 +215,6 @@ const getInitials = function (account) {
 
 accounts.map(account => {
   getInitials(account);
- 
 });
 
 const getDeposits = function (accounts) {
@@ -133,14 +224,12 @@ const getDeposits = function (accounts) {
 };
 getDeposits(accounts);
 
-
 const getWithdrawals = function (accounts) {
   accounts.map(function (account) {
     account.withdrawal = account.movements.filter(mov => mov < 0);
   });
 };
 getWithdrawals(accounts);
-
 
 const calBalance = function (accounts) {
   accounts.map(function (account) {
@@ -153,18 +242,21 @@ calBalance(accounts);
 
 const displayAll = function (account) {
   displayMovements(account);
-  labelBalance.innerHTML = `${account.balance} &#8377;`;
-  labelSumIn.innerHTML = `${account.deposit.reduce(
-    (acc, deposit) => acc + deposit,
-    0
-  )} &#8377;`;
+  labelBalance.innerHTML = `${account.balance.toFixed(2)} &#8377;`;
+  labelSumIn.innerHTML = `${account.deposit
+    .reduce((acc, deposit) => acc + deposit, 0)
+    .toFixed(2)} &#8377;`;
   labelSumOut.innerHTML = `${Math.abs(
     account.withdrawal.reduce((acc, deposit) => acc + deposit, 0)
-  )} &#8377;`;
+  ).toFixed(2)} &#8377;`;
   labelWelcome.textContent = `Hey, ${account.owner}`;
-  labelSumInterest.innerHTML = `${
-    (account.balance * account.interestRate) / 100
-  }  &#8377;`;
+  labelSumInterest.innerHTML = `${(
+    (account.balance * account.interestRate) /
+    100
+  ).toFixed(2)}  &#8377;`;
+  labelDate.textContent = `${new Date().getDate().toString().padStart(2,0)}/${
+    (new Date().getMonth() + 1).toString().padStart(2,0)
+  }/${new Date().getFullYear().toString().padStart(2,0)}, ${new Date().getHours().toString().padStart(2,0)}:${new Date().getMinutes().toString().padStart(2,0)}`;
 };
 
 const calAll = function (accounts) {
@@ -172,7 +264,6 @@ const calAll = function (accounts) {
   getDeposits(accounts);
   getWithdrawals(accounts);
 };
-
 
 containerApp.style.opacity = '0';
 
@@ -190,7 +281,7 @@ btnLogin.addEventListener('click', function (e) {
       containerApp.style.opacity = '1';
     } else {
       alert('Wrong Password 🚫');
-      inputLoginPin.value = "";
+      inputLoginPin.value = '';
       return;
     }
   } else {
@@ -201,73 +292,81 @@ btnLogin.addEventListener('click', function (e) {
   inputLoginPin.blur();
 });
 
-
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const tranferToAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  let balanceToBeTranfered = Number(inputTransferAmount.value);
-  if (tranferToAcc && tranferToAcc !== currentAccount && balanceToBeTranfered>0) {
+  let balanceToBeTranfered = +inputTransferAmount.value;
+  if (
+    tranferToAcc &&
+    tranferToAcc !== currentAccount &&
+    balanceToBeTranfered > 0
+  ) {
     if (balanceToBeTranfered <= currentAccount.balance) {
       tranferToAcc.movements.push(balanceToBeTranfered);
+      tranferToAcc.movementsDates.push(new Date().toISOString());
       currentAccount.movements.push(-balanceToBeTranfered);
+      currentAccount.movementsDates.push(new Date().toISOString()); 
       calAll(accounts);
       displayAll(currentAccount);
-    }
-    else{
-      alert("Invalid Amount 👎")
+    } else {
+      alert('Invalid Amount 👎');
     }
     inputTransferTo.value = '';
     inputTransferAmount.value = '';
     inputTransferAmount.blur();
-  }
-  else{
-    alert("Enter correct account & amount details!")
+  } else {
+    alert('Enter correct account & amount details!');
     inputTransferTo.value = '';
     inputTransferAmount.value = '';
     inputTransferAmount.blur();
   }
 });
 
-btnLoan.addEventListener("click",function(e){
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
-  const loanAmount = Number(inputLoanAmount.value);
-  if(!currentAccount.deposit.some(tran => tran >= 0.1*loanAmount )){
-    alert("Loan Amount is too much, Sorry🙏");
-  }
-  else{
+  const loanAmount = Math.floor(inputLoanAmount.value);
+  if (!currentAccount.deposit.some(tran => tran >= 0.1 * loanAmount)) {
+    alert('Loan Amount is too much, Sorry🙏');
+  } else {
     currentAccount.movements.push(loanAmount);
     calAll(accounts);
+    currentAccount.movementsDates.push(new Date().toISOString());
+    console.log(currentAccount);
     displayAll(currentAccount);
   }
-  inputLoanAmount.value = "";
+  inputLoanAmount.value = '';
   inputLoanAmount.blur();
-})
+});
 
-labelLogo.addEventListener("click",function(){
- 
+labelLogo.addEventListener('click', function () {
   location.reload();
 });
 
-btnClose.addEventListener("click",function(e){
+btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   const accountToBeRemoved = inputCloseUsername.value;
-  if(accountToBeRemoved === currentAccount.username && inputClosePin.value == currentAccount.pin){
-    const index = accounts.findIndex((acc) => acc.username === accountToBeRemoved);
-    accounts.splice(index,1);
-    containerApp.style.opacity = "0";
-    labelWelcome.textContent = "Login to get started"; 
-  }else{
-    alert("Wrong username or pin!");
+  if (
+    accountToBeRemoved === currentAccount.username &&
+    inputClosePin.value == currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === accountToBeRemoved
+    );
+    accounts.splice(index, 1);
+    containerApp.style.opacity = '0';
+    labelWelcome.textContent = 'Login to get started';
+  } else {
+    alert('Wrong username or pin!');
   }
-  inputClosePin.value = "";
-  inputCloseUsername.value = "";
+  inputClosePin.value = '';
+  inputCloseUsername.value = '';
   inputClosePin.blur();
-
-})
-
-btnSort.addEventListener("click",function(){
-    state = state ? false : true;
-    displayMovements(currentAccount,state)
 });
+
+btnSort.addEventListener('click', function () {
+  state = state ? false : true;
+  displayMovements(currentAccount, state);
+});
+
