@@ -11,9 +11,9 @@ const account1 = {
     '2022-01-28T09:15:04.904Z',
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
-    '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-02-28T17:01:17.194Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -30,8 +30,8 @@ const account2 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -48,8 +48,8 @@ const account3 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -66,8 +66,8 @@ const account4 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -84,8 +84,8 @@ const account5 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -101,8 +101,8 @@ const account6 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -118,8 +118,8 @@ const account7 = {
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
     '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -134,9 +134,9 @@ const account8 = {
     '2022-01-28T09:15:04.904Z',
     '2022-04-01T10:17:24.185Z',
     '2022-05-08T14:11:59.604Z',
-    '2022-05-27T17:01:17.194Z',
-    '2022-07-11T23:36:17.929Z',
-    '2022-07-12T10:51:36.790Z',
+    '2023-02-25T17:01:17.194Z',
+    '2023-03-01T23:36:17.929Z',
+    '2023-03-03T10:51:36.790Z',
   ],
   locale: 'en-US',
 };
@@ -179,6 +179,11 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // My Code Starts Here
+const calcDaysBetween = function(day){
+  const daysElapsed = +(new Date()) - (+day);
+  console.log(Math.floor(Math.abs(daysElapsed/(1000 * 60 * 60 *24))));
+  return Math.trunc(Math.abs(daysElapsed/(1000 * 60 * 60 *24)));
+}
 
 const displayMovements = function (account, sort = false) {
   const movements = sort
@@ -189,12 +194,22 @@ const displayMovements = function (account, sort = false) {
   movements.forEach(function (movement, index) {
     const type = movement > 0 ? 'deposit' : 'withdrawal';
     const day = new Date(movementsDate[index]);
+    const displayDate = `${day.getDate()}/${day.getMonth()+1}/${day.getFullYear()}`;
+    let toBeDisplayed;
+    const dayBetween = calcDaysBetween(day);
+    switch(dayBetween){
+      case(0) : toBeDisplayed = "Today"; break;
+      case(1) : toBeDisplayed = "Yesterday"; break;
+      case(2) : toBeDisplayed = "2 Days Ago"; break;
+      case(3) : toBeDisplayed = "3 Days Ago"; break;
+      default : toBeDisplayed =  displayDate;
+    } 
     const html = `
         <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-    <div class="movements__date">${day.getDate()}/${day.getMonth()+1}/${day.getFullYear()}</div>
+    <div class="movements__date">${toBeDisplayed}</div>
           <div class="movements__value">${movement.toFixed(2)}  &#8377;</div>
         </div>
         `;
@@ -369,4 +384,3 @@ btnSort.addEventListener('click', function () {
   state = state ? false : true;
   displayMovements(currentAccount, state);
 });
-
