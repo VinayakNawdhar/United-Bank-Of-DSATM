@@ -18,6 +18,8 @@
     <!-- TOP NAVIGATION -->
     <nav>
       <p class="welcome">Log in to get started</p>
+      <p class="slash">|</p>
+      <button class="create-account">Create Account</button>
       <img src="bank-logo.png" alt="Logo" class="logo" />
       <form class="login">
         <input
@@ -118,6 +120,19 @@
         You will be logged out in <span class="timer">05:00</span>
       </p>
     </main>
+  </div>
+  <div class="modal-window">
+      <div class="close-btn">&times;</div>
+      <form action="" class="create-account-form">
+          <input type="text" name="first-name" id="" placeholder="Enter First Name" required>
+          <input type="text" name="last-name" placeholder="Enter Last Name" required>
+          <input type="password" name="pin" placeholder="Create Pin" maxlength="4" required>
+          <input type="password" name="pin" placeholder="Confirm Pin" maxlength="4" required>
+          <input type="number" name="Interest-rate" placeholder="Interest Rate ( 1-6 %)" max="6" min="1" required>
+          <input type="submit" value="Create" class="submit-btn-create-account" placeholder="Create">
+      </form>
+  </div>
+  <div class="overlay"></div>
 
     <footer>
       &copy; by Vinayak Nawdhar | All Rights Reserved

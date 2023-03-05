@@ -168,15 +168,23 @@ const labelSumOut = document.querySelector('.summary__value--out');
 const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
 const labelLogo = document.querySelector('.logo');
+const labelSlash = document.querySelector('.slash');
+const modalContent = document.getElementById("model-content");
+const overlay = document.querySelector(".overlay");
+const modalWindow = document.querySelector(".modal-window");
+
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
 
+const btnCreateAcc = document.querySelector('.create-account');
 const btnLogin = document.querySelector('.login__btn');
 const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
+const closeBtn = document.querySelector(".close-btn");
+const createAccSubmit = document.querySelector(".submit-btn-create-account");
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -189,7 +197,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // My Code Starts Here
 const calcDaysBetween = function (day) {
   const daysElapsed = +new Date() - +day;
-  // console.log(Math.floor(Math.abs(daysElapsed/(1000 * 60 * 60 *24))));
   return Math.trunc(Math.abs(daysElapsed / (1000 * 60 * 60 * 24)));
 };
 
@@ -197,42 +204,52 @@ const displayMovements = function (account, sort = false) {
   const movements = sort
     ? account.movements.slice().sort((a, b) => a - b)
     : account.movements;
-  containerMovements.innerHTML = '';
-  const movementsDate = account.movementsDates;
-  movements.forEach(function (movement, index) {
-    const type = movement > 0 ? 'deposit' : 'withdrawal';
-    const day = new Date(movementsDate[index]);
-    let toBeDisplayed;
-    const dayBetween = calcDaysBetween(day);
-    switch (dayBetween) {
-      case 0:
-        toBeDisplayed = 'Today';
-        break;
-      case 1:
-        toBeDisplayed = 'Yesterday';
-        break;
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-        toBeDisplayed = `${dayBetween} Days Ago`;
-        break;
-      default:
-        toBeDisplayed = new Intl.DateTimeFormat('en-IN').format(day);
-    }
-    const html = `
-        <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${
-      index + 1
-    } ${type}</div>
-    <div class="movements__date">${toBeDisplayed}</div>
-          <div class="movements__value">${movement.toFixed(2)}  &#8377;</div>
-        </div>
-        `;
-
+    containerMovements.innerHTML = '';
+    if(movements.length === 0){
+      const html = `
+            <div class="movements__row">
+              No transactions Yet!
+            </div>
+            `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
+    }else{
+      const movementsDate = account.movementsDates;
+      movements.forEach(function (movement, index) {
+        const type = movement > 0 ? 'deposit' : 'withdrawal';
+        const day = new Date(movementsDate[index]);
+        let toBeDisplayed;
+        const dayBetween = calcDaysBetween(day);
+        switch (dayBetween) {
+          case 0:
+            toBeDisplayed = 'Today';
+            break;
+          case 1:
+            toBeDisplayed = 'Yesterday';
+            break;
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+          case 6:
+            toBeDisplayed = `${dayBetween} Days Ago`;
+            break;
+          default:
+            toBeDisplayed = new Intl.DateTimeFormat('en-IN').format(day);
+        }
+        const html = `
+            <div class="movements__row">
+              <div class="movements__type movements__type--${type}">${
+          index + 1
+        } ${type}</div>
+        <div class="movements__date">${toBeDisplayed}</div>
+              <div class="movements__value">${movement.toFixed(2)}  &#8377;</div>
+            </div>
+            `;
+    
+        containerMovements.insertAdjacentHTML('afterbegin', html);
+      });
+    }
+
 };
 
 let state;
@@ -305,6 +322,9 @@ const displayAll = function (account) {
     year: 'numeric',
   };
   labelDate.textContent = new Intl.DateTimeFormat('en-IN', option).format(now);
+
+  labelSlash.style.opacity = '0';
+  btnCreateAcc.style.opacity = '0';
 };
 
 const calAll = function (accounts) {
@@ -319,13 +339,14 @@ const ticktimer = function () {
     if (time === 0) {
       labelWelcome.textContent = 'Log in to get started';
       containerApp.style.opacity = '0';
+      labelSlash.style.opacity = '1';
+      btnCreateAcc.style.opacity = '1';
       clearInterval(timer);
     }
     labelTimer.textContent = `${Math.trunc(time / 60)
       .toString()
       .padStart(2, 0)}:${(time % 60).toString().padStart(2, 0)}`;
     time--;
-    console.log('running');
   }, 1000);
   return timer;
 };
@@ -405,7 +426,6 @@ btnLoan.addEventListener('click', function (e) {
       currentAccount.movements.push(loanAmount);
       calAll(accounts);
       currentAccount.movementsDates.push(new Date().toISOString());
-      console.log(currentAccount);
       displayAll(currentAccount);
     }
     inputLoanAmount.value = '';
@@ -443,4 +463,60 @@ btnSort.addEventListener('click', function () {
   displayMovements(currentAccount, state);
 });
 
-console.log('en-IN');
+
+overlay.style.display = "none";
+modalWindow.style.display = "none";
+
+
+const Close = function(){
+    overlay.style.display = "none";
+    modalWindow.style.display = "none";
+}
+overlay.addEventListener("click",Close);
+closeBtn.addEventListener("click",Close);
+btnCreateAcc.addEventListener("click",clickedFunction)
+
+function clickedFunction(Content){
+    overlay.style.display = "block";
+    modalWindow.style.display = "block";
+}
+
+document.addEventListener("keydown",function(e){
+    if(e.key == "Escape"){
+        Close();
+    }
+});
+
+createAccSubmit.addEventListener("click",function(e){
+e.preventDefault();
+const elArr = document.querySelectorAll(".create-account-form input");
+if(elArr[2].value !== elArr[3].value){
+  alert("Password Mismatch ⛔");
+  for(let i=2;i<5;i++){
+    elArr[i].value = "";
+  }
+}
+else if(elArr[4].value > 6 || elArr[4].value < 1){
+  alert("Invalid Interest Rate");
+  elArr[4].value = '';
+}
+else{
+  accounts.push({
+    owner : `${elArr[0].value + " " + elArr[1].value}`,
+    pin : Number(elArr[2].value),
+    movements : [],
+    interestRate : +(elArr[4].value),
+    movementsDates : []
+  })
+  for(let i=0;i<5;i++){
+    elArr[i].value = "";
+  }
+  
+  accounts.map(account => {
+    getInitials(account);
+  }); 
+  calAll(accounts);
+  Close();
+}
+
+})
