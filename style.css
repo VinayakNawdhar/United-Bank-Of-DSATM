@@ -308,6 +308,9 @@ h2 {
   margin-top: 1.9rem;
   text-align: right;
   font-size: 1.25rem;
+  position: absolute;
+  left: 80%;
+  top: 92%;
 }
 
 .timer {
@@ -367,7 +370,7 @@ input::-webkit-inner-spin-button {
 }
 
 .close-btn{
-  display: inline;
+  display: block;
   float: right;
   height: 40px;
   width: 40px;
@@ -439,4 +442,21 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   z-index: 10;
   left: 25%;
+}
+.log-out{
+  /* border: 2px solid black; */
+  border-radius: 2rem;
+  color: black;
+  margin-left: 10px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9rem;
+  background-image: linear-gradient(to top left, #e3e8d6, #7f8585);
+  transition: all 0.1s;
+}
+.log-out:hover{
+  font-weight: bold;
+  cursor: pointer;
 }

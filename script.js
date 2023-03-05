@@ -185,6 +185,7 @@ const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
 const closeBtn = document.querySelector(".close-btn");
 const createAccSubmit = document.querySelector(".submit-btn-create-account");
+const btnLogOut = document.querySelector(".log-out");
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -519,4 +520,11 @@ else{
   Close();
 }
 
+})
+
+btnLogOut.addEventListener("click",function(){
+  labelWelcome.textContent = "Log in to get started";
+  containerApp.style.opacity = '0';
+  labelSlash.style.opacity = '1';
+  btnCreateAcc.style.opacity = '1';
 })
