@@ -464,22 +464,17 @@ btnSort.addEventListener('click', function () {
   displayMovements(currentAccount, state);
 });
 
-
-overlay.style.display = "none";
-modalWindow.style.display = "none";
-
-
 const Close = function(){
-    overlay.style.display = "none";
-    modalWindow.style.display = "none";
+    overlay.classList.add('hidden')
+    modalWindow.classList.add('hidden')
 }
 overlay.addEventListener("click",Close);
 closeBtn.addEventListener("click",Close);
 btnCreateAcc.addEventListener("click",clickedFunction)
 
 function clickedFunction(Content){
-    overlay.style.display = "block";
-    modalWindow.style.display = "block";
+  overlay.classList.remove('hidden');
+  modalWindow.classList.remove('hidden');
 }
 
 document.addEventListener("keydown",function(e){
@@ -491,33 +486,35 @@ document.addEventListener("keydown",function(e){
 createAccSubmit.addEventListener("click",function(e){
 e.preventDefault();
 const elArr = document.querySelectorAll(".create-account-form input");
-if(elArr[2].value !== elArr[3].value){
+if(elArr[3].value !== elArr[4].value){
   alert("Password Mismatch ⛔");
-  for(let i=2;i<5;i++){
+  for(let i=3;i<5;i++){
     elArr[i].value = "";
   }
 }
-else if(elArr[4].value > 6 || elArr[4].value < 1){
+else if(elArr[5].value > 6 || elArr[5].value < 1){
   alert("Invalid Interest Rate");
-  elArr[4].value = '';
+  elArr[5].value = '';
+}
+else if(accounts.find(el => el.username === elArr[2].value)){
+  alert("Username already exists! Try another👎");
+  elArr[2].value = '';
 }
 else{
   accounts.push({
     owner : `${elArr[0].value + " " + elArr[1].value}`,
-    pin : Number(elArr[2].value),
+    username : `${elArr[2].value}`,
+    pin : Number(elArr[3].value),
     movements : [],
-    interestRate : +(elArr[4].value),
+    interestRate : +(elArr[5].value),
     movementsDates : []
   })
-  for(let i=0;i<5;i++){
+  for(let i=0;i<6;i++){
     elArr[i].value = "";
   }
-  
-  accounts.map(account => {
-    getInitials(account);
-  }); 
   calAll(accounts);
   Close();
+  alert("Account Successfully Created!🙏");
 }
 
 })

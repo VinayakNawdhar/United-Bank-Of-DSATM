@@ -121,18 +121,19 @@
       </p>
     </main>
   </div>
-  <div class="modal-window">
-      <div class="close-btn">&times;</div>
-      <form action="" class="create-account-form">
+  <div class="modal-window hidden">
+    <span class="close-btn hidden">&times;</span>
+    <form action="" class="create-account-form">
           <input type="text" name="first-name" id="" placeholder="Enter First Name" required>
           <input type="text" name="last-name" placeholder="Enter Last Name" required>
+          <input type="text" name="user-name" id="user-name" placeholder="Username">
           <input type="password" name="pin" placeholder="Create Pin" maxlength="4" required>
           <input type="password" name="pin" placeholder="Confirm Pin" maxlength="4" required>
           <input type="number" name="Interest-rate" placeholder="Interest Rate ( 1-6 %)" max="6" min="1" required>
           <input type="submit" value="Create" class="submit-btn-create-account" placeholder="Create">
       </form>
   </div>
-  <div class="overlay"></div>
+  <div class="overlay hidden"></div>
 
     <footer>
       &copy; by Vinayak Nawdhar | All Rights Reserved

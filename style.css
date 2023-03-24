@@ -366,27 +366,7 @@ input::-webkit-inner-spin-button {
   background-color: rgba(109, 105, 105, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-  
-}
-
-.close-btn{
-  display: block;
-  float: right;
-  height: 40px;
-  width: 40px;
-  font-size: 4vw;
-  text-align: center;
-  cursor: pointer;
-  margin: 0px;
-  /* border: 2px solid black; */
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  transition: all 0.5s;
-}
-
-.close-btn:hover{
-  transform: translateY(1px);
+  transition: all 0.2s ease-in-out;
 }
 
 .create-account-form{
@@ -429,19 +409,20 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   border-radius: 25px;
 }
+
 .modal-window{
   height: 50vh;
   /* border: 2px solid black; */
   width: 40vw;
-  margin: 100px;
+  /* margin: 100px; */
   background-color: #f3f3f3;
   position: absolute;
-  top: 120px;
+  top: 200px;
   text-align: center;
   box-shadow: 2px 2px 10px black;
   border-radius: 10px;
   z-index: 10;
-  left: 25%;
+  left: 30%;
 }
 .log-out{
   /* border: 2px solid black; */
@@ -459,4 +440,28 @@ input::-webkit-inner-spin-button {
 .log-out:hover{
   font-weight: bold;
   cursor: pointer;
+}
+#user-name{
+  width: 50%;
+}
+.overlay.hidden{
+  margin-top: 100vh;
+  height: 0;
+  width: 0;
+  opacity: 0%;
+}
+.modal-window.hidden{
+  display: none;
+}
+.close-btn{
+display: inline;
+position: relative;
+padding: 0px;
+box-sizing: border-box;
+font-size: 4.2rem;
+left: 285px;
+cursor: default;
+}
+.close-btn:hover{
+  font-weight: bold;
 }
