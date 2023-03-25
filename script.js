@@ -325,7 +325,7 @@ const displayAll = function (account) {
   labelDate.textContent = new Intl.DateTimeFormat('en-IN', option).format(now);
 
   labelSlash.style.opacity = '0';
-  btnCreateAcc.style.opacity = '0';
+  btnCreateAcc.style.display = 'none';
 };
 
 const calAll = function (accounts) {
@@ -457,6 +457,8 @@ btnClose.addEventListener('click', function (e) {
   inputClosePin.value = '';
   inputCloseUsername.value = '';
   inputClosePin.blur();
+  labelSlash.style.opacity = '1';
+  btnCreateAcc.style.display = 'inline';
 });
 
 btnSort.addEventListener('click', function () {
@@ -470,11 +472,13 @@ const Close = function(){
 }
 overlay.addEventListener("click",Close);
 closeBtn.addEventListener("click",Close);
+const elArr = document.querySelectorAll(".create-account-form input");
 btnCreateAcc.addEventListener("click",clickedFunction)
 
 function clickedFunction(Content){
   overlay.classList.remove('hidden');
   modalWindow.classList.remove('hidden');
+  elArr[0].focus();
 }
 
 document.addEventListener("keydown",function(e){
@@ -485,7 +489,6 @@ document.addEventListener("keydown",function(e){
 
 createAccSubmit.addEventListener("click",function(e){
 e.preventDefault();
-const elArr = document.querySelectorAll(".create-account-form input");
 if(elArr[3].value !== elArr[4].value){
   alert("Password Mismatch ⛔");
   for(let i=3;i<5;i++){
@@ -523,5 +526,5 @@ btnLogOut.addEventListener("click",function(){
   labelWelcome.textContent = "Log in to get started";
   containerApp.style.opacity = '0';
   labelSlash.style.opacity = '1';
-  btnCreateAcc.style.opacity = '1';
+  btnCreateAcc.style.display = 'inline';
 })

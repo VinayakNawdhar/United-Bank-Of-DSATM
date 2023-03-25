@@ -423,6 +423,7 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   z-index: 10;
   left: 30%;
+  transition: all 0.4s ease-in-out;
 }
 .log-out{
   /* border: 2px solid black; */
@@ -445,14 +446,15 @@ input::-webkit-inner-spin-button {
   width: 50%;
 }
 .overlay.hidden{
-  margin-top: 100vh;
+  display: none;
+}
+.modal-window.hidden{
+  margin-top: 60vh;
   height: 0;
   width: 0;
   opacity: 0%;
 }
-.modal-window.hidden{
-  display: none;
-}
+
 .close-btn{
 display: inline;
 position: relative;
@@ -462,6 +464,7 @@ font-size: 4.2rem;
 left: 285px;
 cursor: default;
 }
+
 .close-btn:hover{
   font-weight: bold;
 }
