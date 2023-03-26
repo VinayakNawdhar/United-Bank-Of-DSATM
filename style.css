@@ -366,10 +366,11 @@ input::-webkit-inner-spin-button {
   background-color: rgba(109, 105, 105, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .create-account-form{
+  margin-top: 45px;
  /* border: 2px solid black;   */
  height: 90%;
  border-radius: inherit ;
@@ -386,13 +387,16 @@ input::-webkit-inner-spin-button {
   width: 50%;
   height: 40px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: 1.9rem;
   background-color: transparent;
   font-family: "Poppins", sans-serif;
   border: none;
   border-bottom: 2px solid #333;
   outline: none;
+}
+.create-account-form input:focus{
+  background-color: #d7d6e2;
 }
 .create-account-form input[type="text"]{
   width: 45%;
@@ -423,7 +427,7 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   z-index: 10;
   left: 30%;
-  transition: all 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 .log-out{
   /* border: 2px solid black; */
@@ -446,7 +450,10 @@ input::-webkit-inner-spin-button {
   width: 50%;
 }
 .overlay.hidden{
-  display: none;
+  /* margin-top: 60vh; */
+  height: 0;
+  width: 0;
+  opacity: 0%;
 }
 .modal-window.hidden{
   margin-top: 60vh;

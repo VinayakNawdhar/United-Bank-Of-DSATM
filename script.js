@@ -471,7 +471,7 @@ const Close = function(){
     modalWindow.classList.add('hidden')
 }
 overlay.addEventListener("click",Close);
-closeBtn.addEventListener("click",Close);
+// closeBtn.addEventListener("click",Close);
 const elArr = document.querySelectorAll(".create-account-form input");
 btnCreateAcc.addEventListener("click",clickedFunction)
 
